@@ -10,10 +10,6 @@ Register your app by going to *Settings > Developer > Register* app with *OAuth 
 
 Access token and site slug are required to get data from NationBuilder.
 
-```
-Give examples
-```
-
 ### Installing
 
 Clone the repository and install the required dependencies by running the following command from root of the folder
