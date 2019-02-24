@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div>
+            {{#if error}}
+            {{#each error}}
+            <div class="alert alert-danger">{{this}}</div>
+            {{/each}}
+            {{/if}}
+        </div>
+        <div>
+            {{#if message}}
+            <div class="alert alert-success">{{message}}</div>
+            {{/if}}
+        </div>
+        {{#if data.id}}
+        <h4>Update Event</h4>
+        {{else}}
+        <h4>Create Event</h4>
+        {{/if}}
+        <hr />
+        <form method="POST" action="/event/{{#if data.id}}{{data.id}}{{else}}create{{/if}}">
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <label for="name">Event Name</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Event Name" value="{{data.name}}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="start_time">Start Date</label>
+                    <input type="datetime-local" name="start_time" class="form-control" id="start_time" placeholder="Start time"
+                        value="" />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="end_time">End Date</label>
+                    <input type="datetime-local" name="end_time" class="form-control" id="end_time" placeholder="End time"
+                        value="" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <label for="intor">Intro</label>
+                    <textarea class="form-control" rows="10" name="intro" id="intro">{{data.intro}}</textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="/events" class="btn btn-primary">back</a>
+        </form>
+    </div>
+    <script>
+        function formatDate(str) {
+            let d;
+            if (str != '' && str !== 'undefined') {
+                d = new Date();
+            } else {
+                d = new Date();
+            }
+            let val = [
+                [d.getFullYear(), leftPadd(d.getMonth() + 1), leftPadd(d.getDate())].join('-'),
+                [leftPadd(d.getHours()), leftPadd(d.getMinutes())].join(':')
+            ].join('T');
+            return val;
+        }
+
+        function leftPadd(str) {
+            return ("0" + str).slice(-2);
+        }
+
+        document.getElementById('start_time').value = formatDate('{{data.start_time}}');
+        document.getElementById('end_time').value = formatDate('{{data.end_time}}');
+    </script>
+</div>

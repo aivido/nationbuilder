@@ -1,0 +1,18 @@
+.center{
+    text-align: center;
+}
+
+.padding-top-50{
+    padding-top: 50%;
+}
+.main-container{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.highlight{
+    background-color: #f7f7f9;
+    padding: 20px;
+}
+cite{
+    color: #269ea0;
+}

@@ -1,0 +1,39 @@
+<div class="row">
+
+
+    <div class="col-md-12">
+        <h4 class="float-left">Events</h4>
+        <a href="/event/create" class="float-right">Create</a>
+        <div class="table-responsive">
+
+            <table id="mytable" class="table table-bordred table-striped">
+
+                <thead>
+                    <th>Name</th>
+                    <th width="30">Edit</th>
+                </thead>
+                <tbody>
+                    {{#if data.results.length}}
+                        {{#each data.results as |result|}}
+                            <tr>
+                                <td>{{result.name}}</td>
+                                <td>
+                                    <a href="/event/{{result.id}}" class="btn btn-primary">Edit</a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                    {{else}}
+                            <tr>
+                                <td colspan="2"><h5>No records found</h5></td>
+                            </tr>
+                    {{/if}}
+
+                </tbody>
+
+            </table>
+
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+</div>
